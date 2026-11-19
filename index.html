@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mirko Daga</title>
+<meta name="description" content="Mirko Daga: ML engineer and NYU MS Data Science student building data and machine learning systems for pricing, forecasting, and agentic AI.">
+<meta property="og:title" content="Mirko Daga">
+<meta property="og:description" content="ML engineer and NYU MS Data Science student. Projects, experience, and contact.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fbfbf9;
+  --surface: #ffffff;
+  --text: #1a1a2e;
+  --muted: #5b5f6b;
+  --border: #e4e4e0;
+  --accent: #3b5bdb;
+  --accent-soft: #edf1ff;
+  --tag-bg: #f1f1ee;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111318;
+    --surface: #181b22;
+    --text: #e8e9ee;
+    --muted: #9aa0ad;
+    --border: #2a2e38;
+    --accent: #8da2ff;
+    --accent-soft: #1d2440;
+    --tag-bg: #232733;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111318;
+  --surface: #181b22;
+  --text: #e8e9ee;
+  --muted: #9aa0ad;
+  --border: #2a2e38;
+  --accent: #8da2ff;
+  --accent-soft: #1d2440;
+  --tag-bg: #232733;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 12px; }
+nav .brand { font-weight: 700; color: var(--text); white-space: nowrap; }
+nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; font-size: 14px; }
+nav ul a { color: var(--muted); }
+nav ul a:hover { color: var(--text); text-decoration: none; }
+@media (max-width: 560px) { nav ul { gap: 12px; font-size: 13px; } nav ul .opt { display: none; } }
+
+header.hero { padding: 72px 0 40px; }
+.hero h1 { font-size: clamp(32px, 6vw, 46px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+.hero .role { font-size: clamp(17px, 2.6vw, 20px); color: var(--muted); margin: 0 0 22px; max-width: 640px; }
+.hero .status {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  padding: 6px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-bottom: 24px;
+}
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 8px; font-size: 15px; font-weight: 500;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+}
+.btn:hover { border-color: var(--accent); text-decoration: none; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] .btn.primary { color: #111318; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #111318; } }
+.btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+section { padding: 40px 0; border-top: 1px solid var(--border); }
+section h2 {
+  font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin: 0 0 24px; font-weight: 600;
+}
+.about p { margin: 0 0 16px; max-width: 680px; font-size: 17px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-top: 28px; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.stat b { display: block; font-size: 22px; letter-spacing: -0.01em; }
+.stat span { color: var(--muted); font-size: 14px; line-height: 1.4; display: block; margin-top: 2px; }
+
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; display: flex; flex-direction: column;
+}
+.card.featured { grid-column: 1 / -1; border-color: var(--accent); }
+.card .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+.card h3 { margin: 0 0 8px; font-size: 18px; }
+.card p { margin: 0 0 14px; color: var(--muted); font-size: 15px; flex: 1; }
+.card ul { margin: 0 0 14px; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.card ul li { margin-bottom: 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tag { font: 12px/1 "JetBrains Mono", ui-monospace, monospace; background: var(--tag-bg); color: var(--muted); padding: 5px 8px; border-radius: 6px; }
+.card .more { font-size: 14px; font-weight: 500; }
+.card .private { font-size: 14px; color: var(--muted); }
+
+.job { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; margin-bottom: 28px; }
+.job:last-child { margin-bottom: 0; }
+.job h3 { margin: 0; font-size: 17px; }
+.job .when { color: var(--muted); font-size: 14px; white-space: nowrap; text-align: right; }
+.job .org { color: var(--muted); font-size: 15px; grid-column: 1 / -1; }
+.job ul { grid-column: 1 / -1; margin: 8px 0 0; padding-left: 18px; }
+.job ul li { margin-bottom: 4px; }
+@media (max-width: 560px) {
+  .job { grid-template-columns: 1fr; }
+  .job .when { text-align: left; }
+}
+
+.skills { display: grid; gap: 14px; }
+.skills div { display: grid; grid-template-columns: 130px 1fr; gap: 12px; }
+.skills b { font-size: 15px; }
+.skills span { color: var(--muted); font-size: 15px; }
+@media (max-width: 560px) { .skills div { grid-template-columns: 1fr; gap: 2px; } }
+
+.contact p { max-width: 620px; font-size: 17px; margin: 0 0 20px; }
+footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Mirko Daga</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="opt"><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+<header class="hero">
+  <h1>Mirko David Daga Acevedo</h1>
+  <p class="role">ML engineer and data scientist. I build scalable data and machine learning systems for pricing, forecasting, and agentic AI.</p>
+  <div class="status">MS Data Science at NYU · Seeking Summer 2027 ML / research engineering internships</div>
+  <div class="links">
+    <a class="btn primary" href="mailto:md6989@nyu.edu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2 .9V18h16V6.4l-8 5.6-8-5.6Zm1.6-.4L12 10.5 18.4 6H5.6Z"/></svg>
+      Email
+    </a>
+    <a class="btn" href="https://github.com/Mirkiux">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+      GitHub
+    </a>
+    <a class="btn" href="https://linkedin.com/in/mirko-daga">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <h2>About</h2>
+  <p>I design and build scalable data and machine learning systems that turn rigorous mathematical foundations into decision platforms with measurable business impact.</p>
+  <p>My background combines graduate training in mathematics, applied machine learning, and large-scale systems design, along with leadership roles delivering forecasting, pricing, and optimization solutions for financial services and multinational companies.</p>
+  <p>I'm passionate about entrepreneurship, design, and engineering-driven decision-making: deciding what to build and how to scale it responsibly.</p>
+  <p>I'm currently pursuing an MS in Data Science at NYU (expected May 2028). I'm looking for on-campus roles at NYU and Summer 2027 internships in machine learning and research engineering. Long term, I want to contribute to frontier AI research.</p>
+  <div class="stats">
+    <div class="stat"><b>~9 years</b><span>shipping production ML in banking, consumer goods, and the public sector</span></div>
+    <div class="stat"><b>+USD 1M / yr</b><span>from the Advanced Pricing project at Scotiabank</span></div>
+    <div class="stat"><b>6 countries</b><span>regional data and AI platform rollout at Industrias San Miguel</span></div>
+    <div class="stat"><b>170 / 170</b><span>GRE Quantitative</span></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+
+    <article class="card featured">
+      <div class="kicker">Applied AI · Oct 2026 to present</div>
+      <h3>AI Requirement Builder</h3>
+      <p>An agentic assistant that interviews public buyers and drafts purchase requirements, piloted with Columbia University researchers and Peru's public-procurement agency.</p>
+      <ul>
+        <li>Tool-calling loop with human-in-the-loop questions on a provider-agnostic Claude client (Claude API, Bedrock, Vertex, Cortex).</li>
+        <li>Deployed end to end: agent on Snowpark Container Services, CopilotKit / AG-UI front end on Cloudflare Workers, CI/CD with live LLM checks and Playwright tests, session logs in Snowflake for evaluation.</li>
+      </ul>
+      <div class="tags"><span class="tag">Claude API</span><span class="tag">agents</span><span class="tag">Snowflake</span><span class="tag">Cloudflare Workers</span><span class="tag">Playwright</span></div>
+      <span class="private">Code is private; happy to walk through it.</span>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Open source · Python</div>
+      <h3>featkit</h3>
+      <p>Automated feature store generation from relational fact tables.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">feature engineering</span></div>
+      <a class="more" href="https://github.com/Mirkiux/featkit">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Open source · Python</div>
+      <h3>dqf</h3>
+      <p>Data Quality Framework: composable, pipeline-based data quality validation for analytical datasets.</p>
+      <div class="tags"><span class="tag">Python</span><span class="tag">data quality</span></div>
+      <a class="more" href="https://github.com/Mirkiux/dqf">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Open source · R</div>
+      <h3>RAiddin</h3>
+      <p>RStudio add-in providing an agentic Claude chat panel with code execution, output capture, and plot vision.</p>
+      <div class="tags"><span class="tag">R</span><span class="tag">Claude API</span><span class="tag">agents</span></div>
+      <a class="more" href="https://github.com/Mirkiux/RAiddin">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Knowledge systems · Terraform</div>
+      <h3>second-brain</h3>
+      <p>A personal, accumulative knowledge base for AI agents: an eleven-database Notion schema provisioned with Terraform, with agent instructions for search, dedup, and supersession.</p>
+      <div class="tags"><span class="tag">Terraform</span><span class="tag">Notion</span><span class="tag">MCP</span></div>
+      <a class="more" href="https://github.com/Mirkiux/second-brain">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Agent workflow</div>
+      <h3>cv-crafter</h3>
+      <p>A provider-agnostic agent workflow for tailoring resumes and cover letters, with one canonical instruction source and thin adapters for each AI coding tool.</p>
+      <div class="tags"><span class="tag">agents</span><span class="tag">LaTeX</span><span class="tag">Overleaf</span></div>
+      <a class="more" href="https://github.com/Mirkiux/cv-crafter">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">RAG · Python</div>
+      <h3>CGR chatbot</h3>
+      <p>RAG chatbot built on Snowflake as part of research work with Peru's Comptroller General and Columbia University.</p>
+      <div class="tags"><span class="tag">RAG</span><span class="tag">Snowflake</span><span class="tag">Python</span></div>
+      <a class="more" href="https://github.com/Mirkiux/CGR_chatbot">View on GitHub →</a>
+    </article>
+
+    <article class="card">
+      <div class="kicker">Open source · R</div>
+      <h3>DSToolkit &amp; TimeSeries</h3>
+      <p>R packages for repetitive data science tasks and time series analysis.</p>
+      <div class="tags"><span class="tag">R</span><span class="tag">time series</span></div>
+      <a class="more" href="https://github.com/Mirkiux/DSToolkit">DSToolkit →</a>
+      <a class="more" href="https://github.com/Mirkiux/TimeSeries">TimeSeries →</a>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="job">
+    <h3>Lead ML Engineer · Lead Data Scientist · Pricing Strategy Specialist</h3>
+    <div class="when">Sep 2019 – Jun 2024</div>
+    <div class="org">Scotiabank · Lima, Peru</div>
+    <ul>
+      <li>Designed the credit-card pricing engine (front and back end) and led the Advanced Pricing project (+USD 1M a year).</li>
+      <li>Built a portfolio repricing model (+200 bps weighted-average rate, +PEN 3M annual revenue) and optimized aggregate portfolio revenue in FICO Xpress with back-testing.</li>
+      <li>Automated 80 production ML models (200 person-hours a month saved) and introduced a production-ready-by-design MLOps pattern.</li>
+      <li>Raised credit-card propensity model Gini from 0.56 to 0.73; built deposit attrition models (50% churn reduction).</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <h3>Corporate Head of Data Science</h3>
+    <div class="when">Jun 2024 – Feb 2026</div>
+    <div class="org">Industrias San Miguel (beverage and consumer goods group) · Santo Domingo, Dominican Republic</div>
+    <ul>
+      <li>Worked with the C-suite to map business needs to a regional Snowflake data and AI platform, rolled out across 6 countries in Central and South America.</li>
+      <li>Led a team of 12 plus contractors and a USD 2M annual technology budget; set governance, CI/CD and MLOps standards and shipped demand-forecasting models.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <h3>Cloud DevOps Engineer (client: Southwest Airlines)</h3>
+    <div class="when">Mar 2026 – Aug 2026</div>
+    <div class="org">Zeal IT Consultants · Remote</div>
+    <ul>
+      <li>Ran Southwest's enterprise observability stack as code (Terraform/Terragrunt, Ansible; AWS Managed Grafana and Prometheus, OpenTelemetry) across 3 environments and 2 regions.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <h3>Research Assistant (part-time)</h3>
+    <div class="when">Aug 2021 – Aug 2026</div>
+    <div class="org">Columbia University, with Peru's Comptroller General</div>
+    <ul>
+      <li>Deployed a complaint model (Gini above 0.90) as FastAPI services on Kubernetes; built a RAG chatbot on Snowflake.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <h3>Specialist, Monetary Policy Design</h3>
+    <div class="when">May 2018 – Sep 2019</div>
+    <div class="org">Central Reserve Bank of Peru</div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="job">
+    <h3>M.S. in Data Science</h3>
+    <div class="when">Sep 2026 – May 2028 (expected)</div>
+    <div class="org">New York University, Center for Data Science</div>
+  </div>
+  <div class="job">
+    <h3>MicroMasters in Advanced Data Science and Global Skills</h3>
+    <div class="when">2024 – Mar 2026</div>
+    <div class="org">MIT x BREIT · BREIT scholarship recipient</div>
+  </div>
+  <div class="job">
+    <h3>B.A. in Economics (quantitative track)</h3>
+    <div class="when">2015 – 2018</div>
+    <div class="org">Pontificia Universidad Católica del Perú · GPA 3.78, 3rd of 60 · graduate coursework in pure mathematics</div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><b>AI and ML</b><span>Claude API, tool use, agents, RAG, CopilotKit / AG-UI, scikit-learn, MLflow, time series, causal inference, optimization (FICO Xpress)</span></div>
+    <div><b>Engineering</b><span>Python, SQL, R; Docker, Kubernetes, FastAPI; AWS, Snowflake, Cloudflare, Terraform, GitLab CI/CD</span></div>
+    <div><b>Languages</b><span>Spanish (native), English (C1)</span></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact</h2>
+  <p>I'm open to Summer 2027 internships in machine learning and research engineering, and to on-campus roles at NYU. The fastest way to reach me is email at md6989@nyu.edu; I also use mirko@mit.edu.</p>
+  <div class="links">
+    <a class="btn primary" href="mailto:md6989@nyu.edu">md6989@nyu.edu</a>
+    <a class="btn" href="mailto:mirko@mit.edu">mirko@mit.edu</a>
+    <a class="btn" href="https://linkedin.com/in/mirko-daga">LinkedIn</a>
+    <a class="btn" href="https://github.com/Mirkiux">GitHub</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Mirko Daga · New York, NY</div>
+</footer>
+
+</body>
+</html>
